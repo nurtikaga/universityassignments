@@ -1,0 +1,353 @@
+package com.journaldev.design.model; // This line specifies the package in which the Computer class resides.
+
+// Definition of an abstract class named "Computer."
+public abstract class Computer {
+
+    // These are abstract methods, meaning they don't have a body and must be implemented by subclasses.
+    public abstract String getRAM(); // This method is used to get information about the RAM of the computer.
+    public abstract String getHDD(); // This method is used to get information about the HDD (Hard Disk Drive) of the computer.
+    public abstract String getCPU(); // This method is used to get information about the CPU (Central Processing Unit) of the computer.
+
+    // This is an overridden method from the Object class. It provides a customized string representation of a Computer object.
+    @Override
+    public String toString(){
+        // This line constructs a string representation of the computer's attributes, including RAM, HDD, and CPU.
+        return "RAM= " + this.getRAM() + ", HDD= " + this.getHDD() + ", CPU= " + this.getCPU();
+    }
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Here we declarate specifying the package in which the PC and Server classes reside.
+package com.journaldev.design.model;
+
+// Definition of the "PC" class, which extends the "Computer" abstract class.
+public class PC extends Computer {
+
+    // These are private instance variables (fields) that store information about the PC's RAM, HDD, and CPU.
+    private String ram;
+    private String hdd;
+    private String cpu;
+
+    // This is the constructor for the PC class, which takes three parameters to initialize the PC's attributes.
+    public PC(String ram, String hdd, String cpu) {
+        this.ram = ram;
+        this.hdd = hdd;
+        this.cpu = cpu;
+    }
+
+    // These are overridden methods from the "Computer" abstract class.
+
+    // This method returns the RAM information of the PC.
+    @Override
+    public String getRAM() {
+        return this.ram;
+    }
+
+    // This method returns the HDD information of the PC.
+    @Override
+    public String getHDD() {
+        return this.hdd;
+    }
+
+    // This method returns the CPU information of the PC.
+    @Override
+    public String getCPU() {
+        return this.cpu;
+    }
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Here we declarate specifying the package in which the PC and Server classes reside.
+package com.journaldev.design.model;
+
+// This is the definition of the "PC" class, which extends the "Computer" abstract class.
+public class PC extends Computer {
+
+    // These are private instance variables (fields) that store information about the PC's RAM, HDD, and CPU.
+    private String ram;
+    private String hdd;
+    private String cpu;
+
+    // This is the constructor for the PC class, which takes three parameters to initialize the PC's attributes.
+    public PC(String ram, String hdd, String cpu) {
+        this.ram = ram;
+        this.hdd = hdd;
+        this.cpu = cpu;
+    }
+
+    // These are overridden methods from the "Computer" abstract class.
+
+    // This method returns the RAM information of the PC.
+    @Override
+    public String getRAM() {
+        return this.ram;
+    }
+
+    // This method returns the HDD information of the PC.
+    @Override
+    public String getHDD() {
+        return this.hdd;
+    }
+
+    // This method returns the CPU information of the PC.
+    @Override
+    public String getCPU() {
+        return this.cpu;
+    }
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Here we declarate specifying the package in which the ComputerFactory class resides.
+package com.journaldev.design.factory;
+
+// These are import statements to bring in classes from other packages.
+import com.journaldev.design.model.Computer;
+import com.journaldev.design.model.PC;
+import com.journaldev.design.model.Server;
+
+// This is the definition of the "ComputerFactory" class, which is responsible for creating instances of different types of computers.
+public class ComputerFactory {
+
+    // This is a static method that creates and returns a computer based on the specified type and hardware specifications.
+    public static Computer getComputer(String type, String ram, String hdd, String cpu) {
+        // If the specified type is "PC," create and return an instance of the "PC" class with the given specifications.
+        if ("PC".equalsIgnoreCase(type)) {
+            return new PC(ram, hdd, cpu);
+        }
+        // If the specified type is "Server," create and return an instance of the "Server" class with the given specifications.
+        else if ("Server".equalsIgnoreCase(type)) {
+            return new Server(ram, hdd, cpu);
+        }
+        // If the specified type is neither "PC" nor "Server," return null to indicate an invalid type.
+        return null;
+    }
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Here we declarate specifying the package in which the TestFactory class resides.
+package com.journaldev.design.test;
+
+// These are import statements to bring in classes from other packages.
+import com.journaldev.design.factory.ComputerFactory;
+import com.journaldev.design.model.Computer;
+
+// This is the definition of the "TestFactory" class, which contains the main method to test the computer factory.
+public class TestFactory {
+
+    // This is the entry point of the program.
+    public static void main(String[] args) {
+        // Create a "Computer" object representing a PC by calling the "getComputer" method of the "ComputerFactory" class.
+        // Provide specifications for RAM, HDD, and CPU as arguments.
+        Computer pc = ComputerFactory.getComputer("pc", "2 GB", "500 GB", "2.4 GHz");
+
+        // Create a "Computer" object representing a Server by calling the "getComputer" method of the "ComputerFactory" class.
+        // Provide specifications for RAM, HDD, and CPU as arguments.
+        Computer server = ComputerFactory.getComputer("server", "16 GB", "1 TB", "2.9 GHz");
+
+        // Print the details of the PC and Server computers.
+        System.out.println("PC Details: " + pc);
+        System.out.println("Server Details: " + server);
+    }
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Definition of an abstract class named "Computer."
+public abstract class Computer {
+
+    // These are abstract methods, meaning they don't have a body and must be implemented by subclasses.
+    public abstract String getRAM(); // This method is used to get information about the RAM of the computer.
+    public abstract String getHDD(); // This method is used to get information about the HDD (Hard Disk Drive) of the computer.
+    public abstract String getCPU(); // This method is used to get information about the CPU (Central Processing Unit) of the computer.
+
+    // This is an overridden method from the Object class. It provides a customized string representation of a Computer object.
+    @Override
+    public String toString(){
+        // This line constructs a string representation of the computer's attributes, including RAM, HDD, and CPU.
+        return "RAM= " + this.getRAM() + ", HDD= " + this.getHDD() + ", CPU= " + this.getCPU();
+    }
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Definition of the "PC" class, which extends the "Computer" abstract class.
+public class PC extends Computer {
+
+    // These are private instance variables (fields) that store information about the PC's RAM, HDD, and CPU.
+    private String ram;
+    private String hdd;
+    private String cpu;
+
+    // This is the constructor for the PC class, which takes three parameters to initialize the PC's attributes.
+    public PC(String ram, String hdd, String cpu) {
+        this.ram = ram;
+        this.hdd = hdd;
+        this.cpu = cpu;
+    }
+
+    // These are overridden methods from the "Computer" abstract class.
+
+    // This method returns the RAM information of the PC.
+    @Override
+    public String getRAM() {
+        return this.ram;
+    }
+
+    // This method returns the HDD information of the PC.
+    @Override
+    public String getHDD() {
+        return this.hdd;
+    }
+
+    // This method returns the CPU information of the PC.
+    @Override
+    public String getCPU() {
+        return this.cpu;
+    }
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Definition of the "Server" class, which also extends the "Computer" abstract class.
+public class Server extends Computer {
+
+    // These are private instance variables (fields) that store information about the Server's RAM, HDD, and CPU.
+    private String ram;
+    private String hdd;
+    private String cpu;
+
+    // This is the constructor for the Server class, which takes three parameters to initialize the Server's attributes.
+    public Server(String ram, String hdd, String cpu) {
+        this.ram = ram;
+        this.hdd = hdd;
+        this.cpu = cpu;
+    }
+
+    // These are overridden methods from the "Computer" abstract class.
+
+    // This method returns the RAM information of the Server.
+    @Override
+    public String getRAM() {
+        return this.ram;
+    }
+
+    // This method returns the HDD information of the Server.
+    @Override
+    public String getHDD() {
+        return this.hdd;
+    }
+
+    // This method returns the CPU information of the Server.
+    @Override
+    public String getCPU() {
+        return this.cpu;
+    }
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Definition of the "ComputerAbstractFactory" interface.
+import com.journaldev.design.model.Computer;
+
+public interface ComputerAbstractFactory {
+    // This method declares a factory method to create a Computer object.
+    public Computer createComputer();
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Definition of the "PCFactory" class, which implements the "ComputerAbstractFactory" interface.
+import com.journaldev.design.model.Computer;
+import com.journaldev.design.model.PC;
+
+public class PCFactory implements ComputerAbstractFactory {
+    // These are private instance variables (fields) that store information about the PC's RAM, HDD, and CPU.
+    private String ram;
+    private String hdd;
+    private String cpu;
+
+    // This is the constructor for the PCFactory class, which takes three parameters to initialize the PC's attributes.
+    public PCFactory(String ram, String hdd, String cpu) {
+        this.ram = ram;
+        this.hdd = hdd;
+        this.cpu = cpu;
+    }
+
+    // This method implements the createComputer() method declared in the ComputerAbstractFactory interface.
+    // It creates and returns an instance of the "PC" class with the specified hardware specifications.
+    @Override
+    public Computer createComputer() {
+        return new PC(ram, hdd, cpu);
+    }
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Definition of the "ServerFactory" class, which also implements the "ComputerAbstractFactory" interface.
+import com.journaldev.design.model.Computer;
+import com.journaldev.design.model.Server;
+
+public class ServerFactory implements ComputerAbstractFactory {
+    // These are private instance variables (fields) that store information about the Server's RAM, HDD, and CPU.
+    private String ram;
+    private String hdd;
+    private String cpu;
+
+    // This is the constructor for the ServerFactory class, which takes three parameters to initialize the Server's attributes.
+    public ServerFactory(String ram, String hdd, String cpu) {
+        this.ram = ram;
+        this.hdd = hdd;
+        this.cpu = cpu;
+    }
+
+    // This method implements the createComputer() method declared in the ComputerAbstractFactory interface.
+    // It creates and returns an instance of the "Server" class with the specified hardware specifications.
+    @Override
+    public Computer createComputer() {
+        return new Server(ram, hdd, cpu);
+    }
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Definition of the "ComputerFactory" class.
+import com.journaldev.design.model.Computer;
+
+public class ComputerFactory {
+    // This static method takes a factory object that implements the ComputerAbstractFactory interface and creates a Computer object using it.
+    public static Computer getComputer(ComputerAbstractFactory factory) {
+        return factory.createComputer();
+    }
+}
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+// Definition of the "TestDesignPatterns" class, which contains the main method to test the abstract factory pattern.
+import com.journaldev.design.abstractfactory.PCFactory;
+import com.journaldev.design.abstractfactory.ServerFactory;
+import com.journaldev.design.model.Computer;
+
+public class TestDesignPatterns {
+    public static void main(String[] args) {
+        // Call the method to test the abstract factory pattern.
+        testAbstractFactory();
+    }
+
+    private static void testAbstractFactory() {
+        // Create a Computer object representing a PC by using the PCFactory and providing hardware specifications.
+        Computer pc = ComputerFactory.getComputer(new PCFactory("2 GB", "500 GB", "2.4 GHz"));
+
+        // Create a Computer object representing a Server by using the ServerFactory and providing hardware specifications.
+        Computer server = ComputerFactory.getComputer(new ServerFactory("16 GB", "1 TB", "2.9 GHz"));
+
+        // Print the details of the PC and Server computers.
+        System.out.println("PC Details: " + pc);
+        System.out.println("Server Details: " + server);
+    }
+}
